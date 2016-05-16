@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() { // on dom ready
 	(function(){
 		var str=handleRequest('NetworkGraphServlet', 'getNetworkGraph', null);
 		data=Ext.JSON.decode(str);
+		console.log(data);
 	})();
 	
 	var cy = cytoscape({

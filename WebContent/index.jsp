@@ -450,7 +450,7 @@ Ext.onReady(function(){
 	
 	//网络图
 	var cytoscope=Ext.create('Ext.panel.Panel',{
-		title:'Cytoscope网络图',
+		title:'网络图Demo1',
 		padding:0,
 		frame:true,
 		titleAlign:'center',
