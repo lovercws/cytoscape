@@ -36,6 +36,24 @@ Ext.onReady(function(){
 		checkboxNodes=Ext.JSON.decode(str);
 	}
 	function createDetailNodeForm(){
+		//节点颜色选择器
+		var colorPicker = Ext.create('Ext.menu.ColorPicker', {
+		    value: '000000',
+		    listeners:{
+		    	select:function(picker,color,eOpts){
+		    		Ext.getCmp('backgroundColor').setValue(color);
+		    	}
+		    }
+		});
+		//线颜色选择器
+		var lineColorPicker = Ext.create('Ext.menu.ColorPicker', {
+		    value: '000000',
+		    listeners:{
+		    	select:function(picker,color,eOpts){
+		    		Ext.getCmp('lineColor').setValue(color);
+		    	}
+		    }
+		});
 		//节点的详情
     	detailNodeForm=Ext.create('Ext.form.Panel',{
     		frame:true,
@@ -413,24 +431,6 @@ Ext.onReady(function(){
 	        	});
 	        }
 	    }]
-	});
-	//节点颜色选择器
-	var colorPicker = Ext.create('Ext.menu.ColorPicker', {
-	    value: '000000',
-	    listeners:{
-	    	select:function(picker,color,eOpts){
-	    		Ext.getCmp('backgroundColor').setValue(color);
-	    	}
-	    }
-	});
-	//线颜色选择器
-	var lineColorPicker = Ext.create('Ext.menu.ColorPicker', {
-	    value: '000000',
-	    listeners:{
-	    	select:function(picker,color,eOpts){
-	    		Ext.getCmp('lineColor').setValue(color);
-	    	}
-	    }
 	});
 	
 	//tab

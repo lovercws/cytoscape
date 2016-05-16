@@ -147,7 +147,7 @@ public class NetWorkGraphServiceImpl implements NetWorkGraphService{
 			List<NetworkNode> nodes = graphDao.getAllNetworkNodes();
 			StringBuilder nodesBuilder=new StringBuilder("[");
 			//节点的默认样式
-			style.append("{selector:'node',style:{'font-size': 14,'width': 'mapData(score, 0, 1, 20, 50)','height':'mapData(score, 0, 1, 20, 50)','content' : 'data(name)','text-opacity' : 0.5,'text-valign' : 'center','text-outline-width': 2,'min-zoomed-font-size': 8}},");
+			style.append("{selector:'node',style:{'font-size': 14,'background-position-x':'5%','background-position-y':'5%','background-width':20,'background-height':20,'width': 'mapData(score, 0, 1, 20, 50)','height':'mapData(score, 0, 1, 20, 50)','content' : 'data(name)','text-opacity' : 0.5,'text-valign' : 'center','text-outline-width': 2,'min-zoomed-font-size': 8}},");
 			Iterator<NetworkNode> iterator = nodes.iterator();
 			while(iterator.hasNext()){
 				NetworkNode node = iterator.next();

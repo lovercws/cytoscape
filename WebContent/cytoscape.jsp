@@ -5,8 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Cytoscope网络图</title>
-<meta name="viewport"
-	content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
 <script type="text/javascript" src="./js/cytoscape.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/ext-all.css"/>
 <script type="text/javascript" src="js/ext-all.js" charset="UTF-8"></script>
@@ -21,6 +20,10 @@
 	padding: 0px;
 	overflow: hidden;
 	z-index: 999;
+}
+div{
+    left:0px;
+    top: 0px;
 }
 </style>
 <script type="text/javascript">
@@ -65,6 +68,8 @@ document.addEventListener('DOMContentLoaded', function() { // on dom ready
  	//设置节点的坐标位置
 	cy.filter(function(i, element){
 		 if( element.isNode() && element.data("positionX") >0.0 ){
+			 //alert("宽度 "+element.width());
+			 //alert("高度"+element.height());
 			 element.renderedPosition({
 				 x : element.data("positionX"),
 				 y : element.data("positionY")
@@ -88,9 +93,37 @@ document.addEventListener('DOMContentLoaded', function() { // on dom ready
 	cy.on('tap', 'edge', function(e){
 		console.log(e);
 	});
+	
+	//当只有一个节点的时候 要缩放节点
+	var nodes=cy.collection("node");
+	if(nodes.length==1){
+		var element=nodes[0];
+		//节点缩放
+		cy.zoom({
+			  level: 1.0, // the zoom level
+			  renderedPosition: { x: 300, y: 150 }
+		});
+		
+		var positionX=element.data("positionX");
+		if(positionX<40){
+			positionX=40;
+		}
+		
+		var positionY=element.data("positionY");
+		if(positionY<30){
+			positionY=30;
+		}
+		//节点位置
+		element.renderedPosition({
+			 x : positionX,
+			 y : positionY
+		 });
+	}
+	
 	//禁用放大和缩小、面板移动
 	cy.userZoomingEnabled(false);
 	cy.userPanningEnabled(false);
+	
 	
 });	
 </script>
